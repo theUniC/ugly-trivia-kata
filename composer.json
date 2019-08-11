@@ -1,0 +1,22 @@
+{
+    "name": "theunic/ugly-trivia-kata",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "theUniC",
+            "email": "theunic@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "UglyTriviaKata\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\UglyTriviaKata\\": "tests/"
+        }
+    }
+}
