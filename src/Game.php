@@ -4,11 +4,6 @@ declare(strict_types=1);
 
 namespace UglyTriviaKata;
 
-function echoln($string)
-{
-    echo $string . PHP_EOL;
-}
-
 class Game
 {
     use PublishesEvents;
