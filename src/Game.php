@@ -8,6 +8,14 @@ class Game
 {
     use PublishesEvents;
 
+    private const POP_POSITIONS         = [0, 4, 8];
+    private const SCIENCE_POSITIONS     = [1, 5, 9];
+    private const SPORTS_POSITIONS      = [2, 6, 10];
+
+    private const PURSES_TO_WIN = 6;
+
+    private const MAX_POSITIONS = 11;
+
     private $players        = array();
     private $places         = array(0);
     private $purses         = array(0);
@@ -126,15 +134,15 @@ class Game
     {
         $place = $this->places[$this->currentPlayer];
 
-        if (in_array($place, [0, 4, 8], true)) {
+        if (in_array($place, self::POP_POSITIONS, true)) {
             return 'Pop';
         }
 
-        if (in_array($place, [1, 5, 9], true)) {
+        if (in_array($place, self::SCIENCE_POSITIONS, true)) {
             return 'Science';
         }
 
-        if (in_array($place, [2, 6, 10], true)) {
+        if (in_array($place, self::SPORTS_POSITIONS, true)) {
             return 'Sports';
         }
 
@@ -143,7 +151,7 @@ class Game
 
     private function didPlayerWin(): bool
     {
-        return 6 !== $this->purses[$this->currentPlayer];
+        return self::PURSES_TO_WIN !== $this->purses[$this->currentPlayer];
     }
 
     private function isCurrentPlayerInPenaltyBox()
@@ -188,7 +196,7 @@ class Game
 
         $this->places[$this->currentPlayer] += $newPosition;
 
-        if ($this->places[$this->currentPlayer] > 11) {
+        if ($this->places[$this->currentPlayer] > self::MAX_POSITIONS) {
             $this->places[$this->currentPlayer] -= 12;
         }
 
